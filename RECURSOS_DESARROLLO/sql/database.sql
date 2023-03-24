@@ -9,21 +9,23 @@ CREATE TABLE usuario(
 );
 CREATE TABLE clasificacion(
     id INT NOT NULL PRIMARY KEY,
-    nombre VARCHAR(255) NOT NULL
+    nombre VARCHAR(255) NOT NULL,
+    contenido TEXT NOT NULL
 );
 CREATE TABLE comentarios(
     id INT NOT NULL PRIMARY KEY,
-    contenido TEXT NOT NULL,
-    direccion VARCHAR(255) NOT NULL,
     usuario VARCHAR(255) NOT NULL,
+    fecha VARCHAR(20) NOT NULL,
     clasificacion INT NOT NULL,
+    contenido TEXT NOT NULL,
     FOREIGN KEY (clasificacion) REFERENCES clasificacion(id),
     FOREIGN KEY (usuario) REFERENCES usuario(username)
 );
 CREATE TABLE sugerencias(
     id INT NOT NULL PRIMARY KEY,
-    contenido TEXT NOT NULL,
     usuario VARCHAR(255) NOT NULL,
+    fecha VARCHAR(20) NOT NULL,
+    contenido TEXT NOT NULL,
     FOREIGN KEY (usuario) REFERENCES usuario(username)
 );
 
@@ -36,6 +38,6 @@ INSERT INTO usuario VALUES('usuario4','secure123','Ana González','USUARIO');
 INSERT INTO usuario VALUES('usuario5','qwertyuiop','Luisa Martínez','USUARIO');
 
 --Classificaciones existentes del blog
-INSERT INTO clasificacion VALUES(1,'Alimentacion');
-INSERT INTO clasificacion VALUES(2,'Energia');
-INSERT INTO clasificacion VALUES(3,'Materia Prima');
+INSERT INTO clasificacion VALUES(1,'Alimentacion','');
+INSERT INTO clasificacion VALUES(2,'Energia','');
+INSERT INTO clasificacion VALUES(3,'Materia Prima','');

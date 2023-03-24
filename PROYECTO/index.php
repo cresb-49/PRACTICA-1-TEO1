@@ -1,5 +1,4 @@
 <?php
-require('views/header.php');
-require('views/V_verContenido.php');
-require('views/footer.php');
-?>
+require_once('config.php');
+phpinfo();
+var_dump(urlsite);
