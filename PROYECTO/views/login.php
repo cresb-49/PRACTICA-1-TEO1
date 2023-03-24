@@ -60,7 +60,7 @@ require('../views/header.php');
 </div>
 </body>
 
-<?PHP 
+<?php
     require('../views/footer.php');
 ?>
 
