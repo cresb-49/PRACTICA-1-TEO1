@@ -1,5 +1,5 @@
 <?php
-class indexModel{
+class database{
     private $Modelo;
     private $db;
 
@@ -13,8 +13,8 @@ class indexModel{
         $consulta = 'SELECT COUNT(*) as cantidad FROM comentarios as co WHERE co.clasificacion = 1';
         $response = $this -> db -> query($consulta);
         $resultado = null;
-        while($fila = $response -> FETCHALL(PDO::FETCH_ASSOC)){
-            $resultado = $fila;
+        if($fila = $response -> FETCHALL(PDO::FETCH_ASSOC)){
+            $resultado = $fila[0]['cantidad'];
         }
         return $resultado;
     }
@@ -22,8 +22,8 @@ class indexModel{
         $consulta = 'SELECT COUNT(*) as cantidad FROM comentarios as co WHERE co.clasificacion = 2';
         $response = $this -> db -> query($consulta);
         $resultado = null;
-        while($fila = $response -> FETCHALL(PDO::FETCH_ASSOC)){
-            $resultado = $fila;
+        if($fila = $response -> FETCHALL(PDO::FETCH_ASSOC)){
+            $resultado = $fila[0]['cantidad'];
         }
         return $resultado;
     }
@@ -31,8 +31,8 @@ class indexModel{
         $consulta = 'SELECT COUNT(*) as cantidad FROM comentarios as co WHERE co.clasificacion = 3';
         $response = $this -> db -> query($consulta);
         $resultado = null;
-        while($fila = $response -> FETCHALL(PDO::FETCH_ASSOC)){
-            $resultado = $fila;
+        if($fila = $response -> FETCHALL(PDO::FETCH_ASSOC)){
+            $resultado = $fila[0]['cantidad'];
         }
         return $resultado;
     }

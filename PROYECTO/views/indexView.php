@@ -1,6 +1,5 @@
 <?php
 require_once('views/header.php');
-var_dump($comenT1);
 ?>
 
 <link rel="stylesheet" href="http://localhost/PRACTICA-1-TEO1/PROYECTO/views/css/comentarios.css">
