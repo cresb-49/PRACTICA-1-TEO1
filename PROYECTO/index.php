@@ -1,4 +1,4 @@
 <?php
 require_once('config.php');
-phpinfo();
-var_dump(urlsite);
+require_once('controller/indexController.php');
+indexController::index();
