@@ -1,5 +1,5 @@
 <?php
-require_once('views/header.php');
+require_once('C:\xampp\htdocs\PRACTICA-1-TEO1\PROYECTO\views\header.php');
 ?>
 
 <link rel="stylesheet" href="http://localhost/PRACTICA-1-TEO1/PROYECTO/views/css/comentarios.css">
@@ -35,9 +35,9 @@ require_once('views/header.php');
 								un alimento básico en muchas culturas.</p>
 								<div class="d-flex justify-content-between align-items-center">
 									<div class="btn-group">
-										<a type="button"
-											href="http://localhost/PRACTICA-1-TEO1/PROYECTO/views/v_verContenidoAlimentacion.php"
-											class="btn btn-sm btn-outline-secondary">Ver</a>
+									<form method="GET" action="http://localhost/PRACTICA-1-TEO1/PROYECTO/controller/controladorContenido.php">
+										<input type="hidden" name="contenido" value="1">
+										<button type="submit" class="btn btn-sm btn-outline-secondary">Ver</button>
 									</div>
 									<small class="text-muted"><?php echo "Comentarios ".$tema1 ?></small>
 
@@ -104,5 +104,5 @@ require_once('views/header.php');
 </div>
 
 <?php
-require_once('views/footer.php');
+require_once('C:\xampp\htdocs\PRACTICA-1-TEO1\PROYECTO\views\footer.php');
 ?>

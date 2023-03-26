@@ -5,11 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login / Sign-up</title>
-    <link rel="stylesheet" href="http://localhost/PRACTICA-1-TEO1/PROYECTO/css/login.css">
+    <link rel="stylesheet" href="http://localhost/PRACTICA-1-TEO1/PROYECTO/views/css/login.css">
 </head>
 
 <?php
-require('../views/header.php');
+require_once('C:\xampp\htdocs\PRACTICA-1-TEO1\PROYECTO\views\header.php');
 ?>
 <body>
 <br>
@@ -61,8 +61,6 @@ require('../views/header.php');
 </body>
 
 <?php
-    require('../views/footer.php');
+    require_once('C:\xampp\htdocs\PRACTICA-1-TEO1\PROYECTO\views\footer.php');
 ?>
-
-
 </html>
