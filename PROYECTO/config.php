@@ -1,3 +1,3 @@
 <?php
-define('urlsite','http://localhost/php/');
-define('path','C:/xampp/htdocs/PRACTICA-1-TEO1/PROYECTO/');
+define('URLSITE', 'http://localhost/php/');
+define('BASE_PATH', realpath(dirname(__FILE__)));
