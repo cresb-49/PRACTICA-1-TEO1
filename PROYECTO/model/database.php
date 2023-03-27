@@ -97,7 +97,8 @@ class database
     }
 
     //Registro de un nuevo usuario en el blog
-    public function saveUsuario($email,$usuario,$password){
+    public function saveUsuario($email, $usuario, $password)
+    {
         $sql = 'INSERT INTO sugerencias (usuario,fecha,contenido) VALUES(:valor1,:valor2,:valor3)';
 
         $stmt = $this -> db -> prepare($sql);
@@ -108,18 +109,46 @@ class database
     }
 
     //Login en el sistema
-    public function login($usuario, $password) {
+    public function login($usuario, $password)
+    {
         $sql = 'SELECT u.username, u.rol FROM usuario as u WHERE u.username = :user AND u.password = :pass';
         $stmt = $this->db->prepare($sql);
         $stmt->bindParam(':user', $usuario);
         $stmt->bindParam(':pass', $password);
         $stmt->execute();
-    
+
         $resultado = null;
         $fila = $stmt->fetchAll(PDO::FETCH_ASSOC);
         if ($fila !== false && count($fila) > 0) {
             $resultado = $fila[0];
         }
         return $resultado;
+    }
+
+    //Obtener las sugerencias del sistema
+    public function getSugerencias()
+    {
+        $consulta = 'SELECT * FROM sugerencias AS su ORDER BY su.fecha DESC';
+        $response = $this-> db -> query($consulta);
+        $resultado = [];
+        $index = 0;
+        while ($fila = $response -> FETCHALL(PDO::FETCH_ASSOC)) {
+            $resultado[$index]=$fila;
+            $index ++;
+        }
+        return $resultado;
+    }
+
+    //registro de comentario
+    public function saveComentario($tema, $usuario, $comentario)
+    {
+        $fechaActual = date('Y-m-d H:i:s');
+        $sql = 'INSERT INTO comentarios (usuario,fecha,clasificacion,contenido) VALUES (:valor1,:valor2,:valor3,:valor4)';
+        $stmt = $this -> db -> prepare($sql);
+        $stmt -> bindParam(':valor1', $usuario);
+        $stmt -> bindParam(':valor2', $fechaActual);
+        $stmt -> bindParam(':valor3', $tema);
+        $stmt -> bindParam(':valor4', $comentario);
+        $stmt -> execute();
     }
 }

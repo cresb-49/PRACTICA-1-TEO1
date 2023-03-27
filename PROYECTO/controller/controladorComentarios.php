@@ -10,16 +10,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Convierte el JSON a un objeto PHP
     $datos = json_decode($json);
     // Accede a los valores del objeto
-    $sugerencia = $datos->sugerencia;
-    $usuario = $datos->usuario;
-    $response = array('status'=>'OK','mensaje'=>'La operacion se realizo con exito');
+    $type = $datos -> type;
+    $usuario = $datos->formulario->usuario;
+    $tema = $datos->formulario->tema;
+    $comentario = $datos->formulario->comentario;
+
+    $response = array('status'=>'OK','mensaje'=> 'Se registro con exito el comentario');
     try {
-        $db -> saveSugerencia($sugerencia, $usuario);
+        $db -> saveComentario($tema, $usuario, $comentario);
     } catch (Exception $e) {
         $response = array('status'=> 'ERROR','mensaje'=> $e -> getMessage());
     }
     $jResponse = json_encode($response);
-    //header('Location: http://localhost/PRACTICA-1-TEO1/PROYECTO/');
     header('Content-Type: application/json');
     echo $jResponse;
 }

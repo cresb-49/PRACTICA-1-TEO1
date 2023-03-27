@@ -15,6 +15,7 @@ require('C:\xampp\htdocs\PRACTICA-1-TEO1\PROYECTO\views\header.php');
         </p>
         <br>
         <form id="formularioSugerencia">
+            <input type="hidden" name="usuario" value="<?php echo $_SESSION["username"] ?>">
             <div class="form-group mb-3">
                 <label for="sugerencia">Comentarios</label>
                 <textarea class="form-control" id="sugerencia" name="sugerencia" rows="8"></textarea>
