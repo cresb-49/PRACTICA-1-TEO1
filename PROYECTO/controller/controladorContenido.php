@@ -1,4 +1,5 @@
 <?php
+//session_start();
 if(isset($_GET['contenido'])){
     // Obtener el valor del parámetro 'contenido'
     $contenido = $_GET['contenido'];
@@ -9,19 +10,16 @@ if(isset($_GET['contenido'])){
             contenidoAlimentacionController::mostrar();
             break;
         case 2:
-            require_once('C:\xampp\htdocs\PRACTICA-1-TEO1\PROYECTO\views\contenidoAlimentacion.php');
+            require_once('C:\xampp\htdocs\PRACTICA-1-TEO1\PROYECTO\controller\contenidoCombustibleController.php');
+            contenidoCombustibleController::mostrar();
             break;
         case 3:
-            require_once('C:\xampp\htdocs\PRACTICA-1-TEO1\PROYECTO\views\contenidoAlimentacion.php');
+            require_once('C:\xampp\htdocs\PRACTICA-1-TEO1\PROYECTO\controller\contenidoCulturaController.php');
+            contenidoCulturaController::mostrar();
             break;
         default:
             require_once('C:\xampp\htdocs\PRACTICA-1-TEO1\PROYECTO\controller\indexController.php');
             indexController::index();
             break;
     }
-}
-
-if (isset($_POST['accion'])) {
-    $contenido = $_POST['accion'];
-    echo $contenido;
 }

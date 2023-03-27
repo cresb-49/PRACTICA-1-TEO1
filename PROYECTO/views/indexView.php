@@ -35,11 +35,14 @@ require_once('C:\xampp\htdocs\PRACTICA-1-TEO1\PROYECTO\views\header.php');
 								un alimento básico en muchas culturas.</p>
 								<div class="d-flex justify-content-between align-items-center">
 									<div class="btn-group">
-									<form method="GET" action="http://localhost/PRACTICA-1-TEO1/PROYECTO/controller/controladorContenido.php">
-										<input type="hidden" name="contenido" value="1">
-										<button type="submit" class="btn btn-sm btn-outline-secondary">Ver</button>
+										<form method="GET"
+											action="http://localhost/PRACTICA-1-TEO1/PROYECTO/controller/controladorContenido.php">
+											<input type="hidden" name="contenido" value="1">
+											<button type="submit" class="btn btn-sm btn-outline-secondary">Ver</button>
+										</form>
 									</div>
-									<small class="text-muted"><?php echo "Comentarios ".$tema1 ?></small>
+									<small
+										class="text-muted"><?php echo "Comentarios ".$tema1 ?></small>
 
 								</div>
 							</div>
@@ -62,11 +65,14 @@ require_once('C:\xampp\htdocs\PRACTICA-1-TEO1\PROYECTO\views\header.php');
 								la seguridad alimentaria y en el medio ambiente.</p>
 								<div class="d-flex justify-content-between align-items-center">
 									<div class="btn-group">
-										<a type="button"
-											href="http://localhost/PRACTICA-1-TEO1/PROYECTO/views/v_verContenidoCombustible.php"
-											class="btn btn-sm btn-outline-secondary">Ver</a>
+										<form method="GET"
+											action="http://localhost/PRACTICA-1-TEO1/PROYECTO/controller/controladorContenido.php">
+											<input type="hidden" name="contenido" value="2">
+											<button type="submit" class="btn btn-sm btn-outline-secondary">Ver</button>
+										</form>
 									</div>
-									<small class="text-muted"><?php echo "Comentarios ".$tema2 ?></small>
+									<small
+										class="text-muted"><?php echo "Comentarios ".$tema2 ?></small>
 								</div>
 							</div>
 						</div>
@@ -88,11 +94,14 @@ require_once('C:\xampp\htdocs\PRACTICA-1-TEO1\PROYECTO\views\header.php');
 								resistencia, han contribuido a su importancia cultural.</p>
 								<div class="d-flex justify-content-between align-items-center">
 									<div class="btn-group">
-										<a type="button"
-											href="http://localhost/PRACTICA-1-TEO1/PROYECTO/views/v_verContenidoCultura.php"
-											class="btn btn-sm btn-outline-secondary">Ver</a>
+										<form method="GET"
+											action="http://localhost/PRACTICA-1-TEO1/PROYECTO/controller/controladorContenido.php">
+											<input type="hidden" name="contenido" value="3">
+											<button type="submit" class="btn btn-sm btn-outline-secondary">Ver</button>
+										</form>
 									</div>
-									<small class="text-muted"><?php echo "Comentarios ".$tema3 ?></small>
+									<small
+										class="text-muted"><?php echo "Comentarios ".$tema3 ?></small>
 								</div>
 							</div>
 						</div>
