@@ -1,5 +1,5 @@
 <?php
-//session_start();
+session_start();
 require('C:\xampp\htdocs\PRACTICA-1-TEO1\PROYECTO\views\header.php');
 ?>
 <link rel="stylesheet" href="http://localhost/PRACTICA-1-TEO1/PROYECTO/views/css/comentarios.css">

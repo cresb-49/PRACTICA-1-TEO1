@@ -1,5 +1,5 @@
 <?php
-//session_start();
+session_start();
 if(isset($_GET['contenido'])){
     // Obtener el valor del parámetro 'contenido'
     $contenido = $_GET['contenido'];

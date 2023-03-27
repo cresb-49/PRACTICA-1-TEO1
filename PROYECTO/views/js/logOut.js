@@ -6,7 +6,8 @@ document.getElementById("logOutForm").addEventListener("submit", function (event
     // Manejar la respuesta del servidor
     xhr.onload = function () {
         if (xhr.status === 200) {
-            alert('Session terminada'); // aquí se muestra la respuesta del servidor
+            window.location.href = 'http://localhost/PRACTICA-1-TEO1/PROYECTO/index.php';
+            console.log(xhr.responseText); 
         }
     };
     //Recogemos los datos del formulario en JSON

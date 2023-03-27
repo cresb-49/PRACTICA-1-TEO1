@@ -12,7 +12,7 @@ document.getElementById("formLogin").addEventListener("submit", function (event)
                 window.location.href = 'http://localhost/PRACTICA-1-TEO1/PROYECTO/index.php';
             }else{
                 //Mostramos el error al usuario
-                alert(response.mensaje);
+                alert("JS loginSingUp -> "+response.mensaje);
             }
         }
     };

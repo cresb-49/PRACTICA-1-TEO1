@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once('C:\xampp\htdocs\PRACTICA-1-TEO1\PROYECTO\model\database.php');
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     //Conexion con la base de datos
@@ -25,9 +25,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $response = array('status'=>'OK','mensaje'=>'Log-in');
         }
     } elseif ($datos->type === 'LOGOUT') {
-        //session_unset();
-        //session_destroy();
-        //header('Location: http://localhost/PRACTICA-1-TEO1/PROYECTO/');
+        session_unset();
+        session_destroy();
+        $response = array('status'=>'OK','mensaje'=>'Session Cerrada');
     } elseif ($datos->type === 'SIGN') {
         //Informaciones para el usaurio
         $info1 = "Las direcciones de correo electronico validas son aquellas que comiencen con una cadena de caracteres alfanumericos, seguida de un signo \"@\" y una cadena de caracteres alfanumericos o guiones, seguida de un punto y dos o mas caracteres alfabeticos.";

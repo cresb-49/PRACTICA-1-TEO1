@@ -35,6 +35,7 @@ print_r($_SESSION);
 						<button type="submit" class="btn btn-outline-light me-2">Logout</button>
 					</div>
 				</form>
+				<script src="http://localhost/PRACTICA-1-TEO1/PROYECTO/views/js/logOut.js"></script>
 				<?php } else { ?>
 				<div class="text-end">
 					<a type="button" href="http://localhost/PRACTICA-1-TEO1/PROYECTO/views/login.php"
@@ -44,4 +45,3 @@ print_r($_SESSION);
 			</div>
 		</div>
 	</header>
-	<script src="http://localhost/PRACTICA-1-TEO1/PROYECTO/views/js/logOut.js"></script>

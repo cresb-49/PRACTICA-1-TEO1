@@ -7,7 +7,7 @@ document.getElementById("formularioSugerencia").addEventListener("submit", funct
     // Manejar la respuesta del servidor
     xhr.onload = function () {
         if (xhr.status === 200) {
-            alert(xhr.responseText); // aquí se muestra la respuesta del servidor
+            console.log(xhr.responseText); // aquí se muestra la respuesta del servidor
         }
     };
     // Enviar los datos del formulario al servidor
