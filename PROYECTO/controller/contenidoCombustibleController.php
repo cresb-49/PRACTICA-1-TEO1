@@ -10,7 +10,9 @@ class contenidoCombustibleController{
     static function mostrar(){
         $model = new database();
         $comentarios = $model -> getComentariosTema2();
-        var_dump($comentarios);
+        $id =2;
+        $clasificacion = $model -> getClasificacion($id);
+        $contenido = $clasificacion['contenido'];
         require_once('C:\xampp\htdocs\PRACTICA-1-TEO1\PROYECTO\views\contenidoCombustible.php');
     }
 }

@@ -151,4 +151,30 @@ class database
         $stmt -> bindParam(':valor4', $comentario);
         $stmt -> execute();
     }
+
+
+    //Guardar contendio del tema
+    public function updateContenido($tema, $contenido)
+    {
+        $sql = 'UPDATE clasificacion SET contenido = :contenido WHERE id = :id';
+        $stmt = $this -> db -> prepare($sql);
+        $stmt -> bindParam(':contenido', $contenido);
+        $stmt -> bindParam(':id', $tema);
+        $stmt -> execute();
+    }
+
+    //Obtener info clasificacion
+    public function getClasificacion($tema)
+    {
+        $sql  = 'SELECT * FROM clasificacion WHERE id = :id';
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(':id', $tema);
+        $stmt->execute();
+        $resultado = null;
+        $fila = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        if ($fila !== false && count($fila) > 0) {
+            $resultado = $fila[0];
+        }
+        return $resultado;
+    }
 }

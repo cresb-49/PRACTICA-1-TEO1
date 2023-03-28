@@ -10,7 +10,9 @@ class contenidoCulturaController{
     static function mostrar(){
         $model = new database();
         $comentarios = $model -> getComentariosTema3();
-        var_dump($comentarios);
+        $id = 3;
+        $clasificacion = $model -> getClasificacion($id);
+        $contenido = $clasificacion['contenido'];
         require_once('C:\xampp\htdocs\PRACTICA-1-TEO1\PROYECTO\views\contenidoCultura.php');
     }
 }

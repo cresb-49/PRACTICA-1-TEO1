@@ -13,8 +13,8 @@ class contenidoAlimentacionController{
         $model = new database();
         $comentarios = $model -> getComentariosTema1();
         $id = 1;
-        //var_dump($comentarios);
-        //var_dump($id);
+        $clasificacion = $model -> getClasificacion($id);
+        $contenido = $clasificacion['contenido'];
         require_once('C:\xampp\htdocs\PRACTICA-1-TEO1\PROYECTO\views\contenidoAlimentacion.php');
     }
 }

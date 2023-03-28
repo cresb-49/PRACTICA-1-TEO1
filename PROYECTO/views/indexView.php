@@ -40,10 +40,20 @@ require_once('C:\xampp\htdocs\PRACTICA-1-TEO1\PROYECTO\views\header.php');
 											<input type="hidden" name="contenido" value="1">
 											<button type="submit" class="btn btn-sm btn-outline-secondary">Ver</button>
 										</form>
+										<?php if (isset($_SESSION['rol'])) { ?>
+										<?php if ($_SESSION['rol'] == 'ADMIN') { ?>
+										<form
+											action="http://localhost/PRACTICA-1-TEO1/PROYECTO/controller/modificarContenidoController.php"
+											method="post">
+											<input type="hidden" name="contenido" value="1">
+											<button type="submit"
+												class="btn btn-sm btn-outline-secondary">Modificar</button>
+										</form>
+										<?php }
+										} ?>
 									</div>
 									<small
 										class="text-muted"><?php echo "Comentarios ".$tema1 ?></small>
-
 								</div>
 							</div>
 						</div>
@@ -70,6 +80,17 @@ require_once('C:\xampp\htdocs\PRACTICA-1-TEO1\PROYECTO\views\header.php');
 											<input type="hidden" name="contenido" value="2">
 											<button type="submit" class="btn btn-sm btn-outline-secondary">Ver</button>
 										</form>
+										<?php if (isset($_SESSION['rol'])) { ?>
+										<?php if ($_SESSION['rol'] == 'ADMIN') { ?>
+										<form
+											action="http://localhost/PRACTICA-1-TEO1/PROYECTO/controller/modificarContenidoController.php"
+											method="post">
+											<input type="hidden" name="contenido" value="2">
+											<button type="submit"
+												class="btn btn-sm btn-outline-secondary">Modificar</button>
+										</form>
+										<?php }
+										} ?>
 									</div>
 									<small
 										class="text-muted"><?php echo "Comentarios ".$tema2 ?></small>
@@ -99,6 +120,17 @@ require_once('C:\xampp\htdocs\PRACTICA-1-TEO1\PROYECTO\views\header.php');
 											<input type="hidden" name="contenido" value="3">
 											<button type="submit" class="btn btn-sm btn-outline-secondary">Ver</button>
 										</form>
+										<?php if (isset($_SESSION['rol'])) { ?>
+										<?php if ($_SESSION['rol'] == 'ADMIN') { ?>
+										<form
+											action="http://localhost/PRACTICA-1-TEO1/PROYECTO/controller/modificarContenidoController.php"
+											method="post">
+											<input type="hidden" name="contenido" value="3">
+											<button type="submit"
+												class="btn btn-sm btn-outline-secondary">Modificar</button>
+										</form>
+										<?php }
+										} ?>
 									</div>
 									<small
 										class="text-muted"><?php echo "Comentarios ".$tema3 ?></small>
