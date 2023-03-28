@@ -28,7 +28,8 @@ CREATE TABLE sugerencias(
     contenido TEXT NOT NULL,
     FOREIGN KEY (usuario) REFERENCES usuario(username)
 );
---Usuarios de inicio del sistema
+
+/*Usuarios de inicio del sistema*/
 INSERT INTO usuario VALUES('admin','Admin12345!','admin_001@dominio.com','ADMIN');
 INSERT INTO usuario VALUES('usuario1','Pass@1234','usuario1_002@dominio.com','USUARIO');
 INSERT INTO usuario VALUES('usuario2','Abcd1234#','usuario2_003@dominio.com','USUARIO');
@@ -36,7 +37,7 @@ INSERT INTO usuario VALUES('usuario3','passworD#2','usuario3_004@dominio.com','U
 INSERT INTO usuario VALUES('usuario4','$ecUre123','usuario4_005@dominio.com','USUARIO');
 INSERT INTO usuario VALUES('usuario5','Qwertyui0p%','usuario5_006@dominio.com','USUARIO');
 
---Classificaciones existentes del blog
+/*Classificaciones existentes del blog*/
 INSERT INTO clasificacion VALUES(1,'Alimentacion','');
 INSERT INTO clasificacion VALUES(2,'Energia','');
 INSERT INTO clasificacion VALUES(3,'Materia Prima','');
