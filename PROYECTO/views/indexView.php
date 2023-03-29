@@ -47,7 +47,7 @@ require_once('C:\xampp\htdocs\PRACTICA-1-TEO1\PROYECTO\views\header.php');
 											method="post">
 											<input type="hidden" name="contenido" value="1">
 											<button type="submit"
-												class="btn btn-sm btn-outline-secondary">Modificar</button>
+												class="btn btn-sm btn-outline-secondary mx-2">Modificar</button>
 										</form>
 										<?php }
 										} ?>
@@ -87,7 +87,7 @@ require_once('C:\xampp\htdocs\PRACTICA-1-TEO1\PROYECTO\views\header.php');
 											method="post">
 											<input type="hidden" name="contenido" value="2">
 											<button type="submit"
-												class="btn btn-sm btn-outline-secondary">Modificar</button>
+												class="btn btn-sm btn-outline-secondary mx-2">Modificar</button>
 										</form>
 										<?php }
 										} ?>
@@ -127,7 +127,7 @@ require_once('C:\xampp\htdocs\PRACTICA-1-TEO1\PROYECTO\views\header.php');
 											method="post">
 											<input type="hidden" name="contenido" value="3">
 											<button type="submit"
-												class="btn btn-sm btn-outline-secondary">Modificar</button>
+												class="btn btn-sm btn-outline-secondary mx-2">Modificar</button>
 										</form>
 										<?php }
 										} ?>

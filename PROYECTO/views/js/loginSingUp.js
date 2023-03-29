@@ -12,7 +12,7 @@ document.getElementById("formLogin").addEventListener("submit", function (event)
                 window.location.href = 'http://localhost/PRACTICA-1-TEO1/PROYECTO/index.php';
             }else{
                 //Mostramos el error al usuario
-                alert("JS loginSingUp -> "+response.mensaje);
+                activarAlerta("Error de inicio de session!!!",response.mensaje.replace(/\\n/g, "<br>"));
             }
         }
     };
@@ -32,7 +32,11 @@ document.getElementById("formSignUp").addEventListener("submit", function (event
     // Manejar la respuesta del servidor
     xhr.onload = function () {
         if (xhr.status === 200) {
-            console.log(xhr.responseText); // aquí se muestra la respuesta del servidor
+            let res = JSON.parse(xhr.responseText);
+            if(res.status === 'ERROR'){
+                //console.log(res);
+                activarAlerta("Error al registrarse!!!",res.mensaje.replace(/\\n/g, "<br>"));
+            }
         }
     };
     //Recogemos los datos del formulario en JSON
@@ -42,3 +46,14 @@ document.getElementById("formSignUp").addEventListener("submit", function (event
     //Enviamos el JSON a php
     xhr.send(response);
 });
+
+
+function activarAlerta(titulo,contenido) {
+    let contenedor = document.getElementById('contenedorLogin');
+    let alert = document.createElement('div');
+    alert.setAttribute('class','alert alert-warning alert-dismissible fade show');
+    alert.setAttribute('role', 'alert');
+    let cont = '<strong>'+titulo+'</strong><br>'+contenido+'<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+    alert.innerHTML = cont;
+    contenedor.appendChild(alert);
+}

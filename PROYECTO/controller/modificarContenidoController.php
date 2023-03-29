@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $clasificacion = $db -> getClasificacion($data_in);
     $contenido = $clasificacion['contenido'];
     $tema = $data_in;
-    if ($data_in > 2) {
+    if ($data_in > 3) {
         //retornamos al inicio de la pagina
         require_once('C:\xampp\htdocs\PRACTICA-1-TEO1\PROYECTO\controller\indexController.php');
         indexController::index();

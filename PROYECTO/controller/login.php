@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $result = $db -> login($datos->params->user, $datos->params->pass);
         if ($result == null) {
             //Estructura de la respuesta para la vista
-            $response = array('status'=>'ERROR','mensaje'=>'El usuario o contrasena son incorrectos');
+            $response = array('status'=>'ERROR','mensaje'=>'El usuario o contraseña son incorrectos');
         } else {
             $user = $result['username'];
             $rol = $result['rol'];
@@ -30,9 +30,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $response = array('status'=>'OK','mensaje'=>'Session Cerrada');
     } elseif ($datos->type === 'SIGN') {
         //Informaciones para el usaurio
-        $info1 = "Las direcciones de correo electronico validas son aquellas que comiencen con una cadena de caracteres alfanumericos, seguida de un signo \"@\" y una cadena de caracteres alfanumericos o guiones, seguida de un punto y dos o mas caracteres alfabeticos.";
-        $info2 = "Son validos los nombres de usuario que contengan unicamente letras mayusculas y minusculas, numeros y guiones bajos (underscore), y que tengan una longitud de entre 3 y 16 caracteres.";
-        $info3 = "La contrasena debe tener entre 8 y 15 caracteres, al menos una letra mayuscula, una letra minuscula, un digito, ningun espacio en blanco y al menos un caracter especial: @$!%#*?&";
+        $info1 = "- Direccion de correo electrónico no válida, ejemplo example@email.com";
+        $info2 = "- Los nombres de usuario válidos contienen mayúsculas y minúsculas, números y guiones bajos (underscore), y deben tener entre 3 y 16 caracteres de longitud.";
+        $info3 = "- Una contraseña válida tiene: 8-15 caracteres, 1 mayúscula, 1 minúscula, 1 número, sin espacios y con al menos 1 caracter especial (@$!%#*?&).";
         //Expreciones regulares de validacion de datos
         $mensaje = "";
         //Validacion del correo electronico
