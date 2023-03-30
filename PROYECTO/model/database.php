@@ -7,16 +7,16 @@ class database
 
     public function __construct()
     {
-        $this -> Modelo = array();
-        $this -> db = new PDO('mysql:host=localhost;dbname=maizblog', 'root', '');
+        $this->Modelo = array();
+        $this->db = new PDO('mysql:host=localhost;dbname=maizblog', 'root', '');
     }
 
     public function mostrarComentariosT1()
     {
         $consulta = 'SELECT COUNT(*) as cantidad FROM comentarios as co WHERE co.clasificacion = 1';
-        $response = $this -> db -> query($consulta);
+        $response = $this->db->query($consulta);
         $resultado = null;
-        if ($fila = $response -> FETCHALL(PDO::FETCH_ASSOC)) {
+        if ($fila = $response->FETCHALL(PDO::FETCH_ASSOC)) {
             $resultado = $fila[0]['cantidad'];
         }
         return $resultado;
@@ -25,12 +25,12 @@ class database
     public function getComentariosTema1()
     {
         $consulta = 'SELECT * FROM comentarios as co WHERE co.clasificacion = 1';
-        $response = $this-> db -> query($consulta);
+        $response = $this->db->query($consulta);
         $resultado = [];
         $index = 0;
-        while ($fila = $response -> FETCHALL(PDO::FETCH_ASSOC)) {
-            $resultado[$index]=$fila;
-            $index ++;
+        while ($fila = $response->FETCHALL(PDO::FETCH_ASSOC)) {
+            $resultado[$index] = $fila;
+            $index++;
         }
         return $resultado;
     }
@@ -39,9 +39,9 @@ class database
     public function mostrarComentariosT2()
     {
         $consulta = 'SELECT COUNT(*) as cantidad FROM comentarios as co WHERE co.clasificacion = 2';
-        $response = $this -> db -> query($consulta);
+        $response = $this->db->query($consulta);
         $resultado = null;
-        if ($fila = $response -> FETCHALL(PDO::FETCH_ASSOC)) {
+        if ($fila = $response->FETCHALL(PDO::FETCH_ASSOC)) {
             $resultado = $fila[0]['cantidad'];
         }
         return $resultado;
@@ -50,12 +50,12 @@ class database
     public function getComentariosTema2()
     {
         $consulta = 'SELECT * FROM comentarios as co WHERE co.clasificacion = 2';
-        $response = $this-> db -> query($consulta);
+        $response = $this->db->query($consulta);
         $resultado = [];
         $index = 0;
-        while ($fila = $response -> FETCHALL(PDO::FETCH_ASSOC)) {
-            $resultado[$index]=$fila;
-            $index ++;
+        while ($fila = $response->FETCHALL(PDO::FETCH_ASSOC)) {
+            $resultado[$index] = $fila;
+            $index++;
         }
         return $resultado;
     }
@@ -63,9 +63,9 @@ class database
     public function mostrarComentariosT3()
     {
         $consulta = 'SELECT COUNT(*) as cantidad FROM comentarios as co WHERE co.clasificacion = 3';
-        $response = $this -> db -> query($consulta);
+        $response = $this->db->query($consulta);
         $resultado = null;
-        if ($fila = $response -> FETCHALL(PDO::FETCH_ASSOC)) {
+        if ($fila = $response->FETCHALL(PDO::FETCH_ASSOC)) {
             $resultado = $fila[0]['cantidad'];
         }
         return $resultado;
@@ -74,12 +74,12 @@ class database
     public function getComentariosTema3()
     {
         $consulta = 'SELECT * FROM comentarios as co WHERE co.clasificacion = 3';
-        $response = $this-> db -> query($consulta);
+        $response = $this->db->query($consulta);
         $resultado = [];
         $index = 0;
-        while ($fila = $response -> FETCHALL(PDO::FETCH_ASSOC)) {
-            $resultado[$index]=$fila;
-            $index ++;
+        while ($fila = $response->FETCHALL(PDO::FETCH_ASSOC)) {
+            $resultado[$index] = $fila;
+            $index++;
         }
         return $resultado;
     }
@@ -89,11 +89,11 @@ class database
     {
         $fechaActual = date('Y-m-d H:i:s');
         $sql = 'INSERT INTO sugerencias (usuario,fecha,contenido) VALUES(:valor1,:valor2,:valor3)';
-        $stmt = $this -> db -> prepare($sql);
-        $stmt -> bindParam(':valor1', $usuario);
-        $stmt -> bindParam(':valor2', $fechaActual);
-        $stmt -> bindParam(':valor3', $comentario);
-        $stmt -> execute();
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(':valor1', $usuario);
+        $stmt->bindParam(':valor2', $fechaActual);
+        $stmt->bindParam(':valor3', $comentario);
+        $stmt->execute();
     }
 
     //Registro de un nuevo usuario en el blog
@@ -101,11 +101,11 @@ class database
     {
         $sql = 'INSERT INTO sugerencias (usuario,fecha,contenido) VALUES(:valor1,:valor2,:valor3)';
 
-        $stmt = $this -> db -> prepare($sql);
-        $stmt -> bindParam(':valor1', $usuario);
-        $stmt -> bindParam(':valor2', $fechaActual);
-        $stmt -> bindParam(':valor3', $comentario);
-        $stmt -> execute();
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(':valor1', $usuario);
+        $stmt->bindParam(':valor2', $fechaActual);
+        $stmt->bindParam(':valor3', $comentario);
+        $stmt->execute();
     }
 
     //Login en el sistema
@@ -129,12 +129,12 @@ class database
     public function getSugerencias()
     {
         $consulta = 'SELECT * FROM sugerencias AS su ORDER BY su.fecha DESC';
-        $response = $this-> db -> query($consulta);
+        $response = $this->db->query($consulta);
         $resultado = [];
         $index = 0;
-        while ($fila = $response -> FETCHALL(PDO::FETCH_ASSOC)) {
-            $resultado[$index]=$fila;
-            $index ++;
+        while ($fila = $response->FETCHALL(PDO::FETCH_ASSOC)) {
+            $resultado[$index] = $fila;
+            $index++;
         }
         return $resultado;
     }
@@ -144,12 +144,12 @@ class database
     {
         $fechaActual = date('Y-m-d H:i:s');
         $sql = 'INSERT INTO comentarios (usuario,fecha,clasificacion,contenido) VALUES (:valor1,:valor2,:valor3,:valor4)';
-        $stmt = $this -> db -> prepare($sql);
-        $stmt -> bindParam(':valor1', $usuario);
-        $stmt -> bindParam(':valor2', $fechaActual);
-        $stmt -> bindParam(':valor3', $tema);
-        $stmt -> bindParam(':valor4', $comentario);
-        $stmt -> execute();
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(':valor1', $usuario);
+        $stmt->bindParam(':valor2', $fechaActual);
+        $stmt->bindParam(':valor3', $tema);
+        $stmt->bindParam(':valor4', $comentario);
+        $stmt->execute();
     }
 
 
@@ -157,10 +157,10 @@ class database
     public function updateContenido($tema, $contenido)
     {
         $sql = 'UPDATE clasificacion SET contenido = :contenido WHERE id = :id';
-        $stmt = $this -> db -> prepare($sql);
-        $stmt -> bindParam(':contenido', $contenido);
-        $stmt -> bindParam(':id', $tema);
-        $stmt -> execute();
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(':contenido', $contenido);
+        $stmt->bindParam(':id', $tema);
+        $stmt->execute();
     }
 
     //Obtener info clasificacion

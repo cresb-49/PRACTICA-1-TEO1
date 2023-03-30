@@ -74,7 +74,7 @@ require_once('C:\xampp\htdocs\PRACTICA-1-TEO1\PROYECTO\views\header.php');
 </body>
 
 <?php
-    require_once('C:\xampp\htdocs\PRACTICA-1-TEO1\PROYECTO\views\footer.php');
+require_once('C:\xampp\htdocs\PRACTICA-1-TEO1\PROYECTO\views\footer.php');
 ?>
 
 </html>

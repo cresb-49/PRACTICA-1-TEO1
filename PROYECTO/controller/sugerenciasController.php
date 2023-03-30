@@ -12,11 +12,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Accede a los valores del objeto
     $sugerencia = $datos->sugerencia;
     $usuario = $datos->usuario;
-    $response = array('status'=>'OK','mensaje'=>'La operacion se realizo con exito');
+    $response = array('status' => 'OK', 'mensaje' => 'La operacion se realizo con exito');
     try {
-        $db -> saveSugerencia($sugerencia, $usuario);
+        $db->saveSugerencia($sugerencia, $usuario);
     } catch (Exception $e) {
-        $response = array('status'=> 'ERROR','mensaje'=> $e -> getMessage());
+        $response = array('status' => 'ERROR', 'mensaje' => $e->getMessage());
     }
     $jResponse = json_encode($response);
     //header('Location: http://localhost/PRACTICA-1-TEO1/PROYECTO/');

@@ -21,11 +21,8 @@ require_once('C:\xampp\htdocs\PRACTICA-1-TEO1\PROYECTO\views\header.php');
 					<div class="col">
 						<div class="card shadow-sm">
 							<br>
-							<svg class="bd-placeholder-img card-img-top" width="100%" height="225"
-								xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
-								preserveAspectRatio="xMidYMid slice" focusable="false">
-								<image href="http://localhost/PRACTICA-1-TEO1/PROYECTO/resources/maizAlimentos.jpg"
-									width="100%" height="100%" />
+							<svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+								<image href="http://localhost/PRACTICA-1-TEO1/PROYECTO/resources/maizAlimentos.jpg" width="100%" height="100%" />
 							</svg>
 							<div class="card-body">
 								<p class="card-text">
@@ -35,25 +32,20 @@ require_once('C:\xampp\htdocs\PRACTICA-1-TEO1\PROYECTO\views\header.php');
 								un alimento básico en muchas culturas.</p>
 								<div class="d-flex justify-content-between align-items-center">
 									<div class="btn-group">
-										<form method="GET"
-											action="http://localhost/PRACTICA-1-TEO1/PROYECTO/controller/controladorContenido.php">
+										<form method="GET" action="http://localhost/PRACTICA-1-TEO1/PROYECTO/controller/controladorContenido.php">
 											<input type="hidden" name="contenido" value="1">
 											<button type="submit" class="btn btn-sm btn-outline-secondary">Ver</button>
 										</form>
 										<?php if (isset($_SESSION['rol'])) { ?>
-										<?php if ($_SESSION['rol'] == 'ADMIN') { ?>
-										<form
-											action="http://localhost/PRACTICA-1-TEO1/PROYECTO/controller/modificarContenidoController.php"
-											method="post">
-											<input type="hidden" name="contenido" value="1">
-											<button type="submit"
-												class="btn btn-sm btn-outline-secondary mx-2">Modificar</button>
-										</form>
+											<?php if ($_SESSION['rol'] == 'ADMIN') { ?>
+												<form action="http://localhost/PRACTICA-1-TEO1/PROYECTO/controller/modificarContenidoController.php" method="post">
+													<input type="hidden" name="contenido" value="1">
+													<button type="submit" class="btn btn-sm btn-outline-secondary mx-2">Modificar</button>
+												</form>
 										<?php }
 										} ?>
 									</div>
-									<small
-										class="text-muted"><?php echo "Comentarios ".$tema1 ?></small>
+									<small class="text-muted"><?php echo "Comentarios " . $tema1 ?></small>
 								</div>
 							</div>
 						</div>
@@ -61,11 +53,8 @@ require_once('C:\xampp\htdocs\PRACTICA-1-TEO1\PROYECTO\views\header.php');
 					<div class="col">
 						<div class="card shadow-sm">
 							<br>
-							<svg class="bd-placeholder-img card-img-top" width="100%" height="225"
-								xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
-								preserveAspectRatio="xMidYMid slice" focusable="false">
-								<image href="http://localhost/PRACTICA-1-TEO1/PROYECTO/resources/maizCombustible.jpg"
-									width="100%" height="100%" />
+							<svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+								<image href="http://localhost/PRACTICA-1-TEO1/PROYECTO/resources/maizCombustible.jpg" width="100%" height="100%" />
 							</svg>
 							<div class="card-body">
 								<p class="card-text">
@@ -75,25 +64,20 @@ require_once('C:\xampp\htdocs\PRACTICA-1-TEO1\PROYECTO\views\header.php');
 								la seguridad alimentaria y en el medio ambiente.</p>
 								<div class="d-flex justify-content-between align-items-center">
 									<div class="btn-group">
-										<form method="GET"
-											action="http://localhost/PRACTICA-1-TEO1/PROYECTO/controller/controladorContenido.php">
+										<form method="GET" action="http://localhost/PRACTICA-1-TEO1/PROYECTO/controller/controladorContenido.php">
 											<input type="hidden" name="contenido" value="2">
 											<button type="submit" class="btn btn-sm btn-outline-secondary">Ver</button>
 										</form>
 										<?php if (isset($_SESSION['rol'])) { ?>
-										<?php if ($_SESSION['rol'] == 'ADMIN') { ?>
-										<form
-											action="http://localhost/PRACTICA-1-TEO1/PROYECTO/controller/modificarContenidoController.php"
-											method="post">
-											<input type="hidden" name="contenido" value="2">
-											<button type="submit"
-												class="btn btn-sm btn-outline-secondary mx-2">Modificar</button>
-										</form>
+											<?php if ($_SESSION['rol'] == 'ADMIN') { ?>
+												<form action="http://localhost/PRACTICA-1-TEO1/PROYECTO/controller/modificarContenidoController.php" method="post">
+													<input type="hidden" name="contenido" value="2">
+													<button type="submit" class="btn btn-sm btn-outline-secondary mx-2">Modificar</button>
+												</form>
 										<?php }
 										} ?>
 									</div>
-									<small
-										class="text-muted"><?php echo "Comentarios ".$tema2 ?></small>
+									<small class="text-muted"><?php echo "Comentarios " . $tema2 ?></small>
 								</div>
 							</div>
 						</div>
@@ -101,11 +85,8 @@ require_once('C:\xampp\htdocs\PRACTICA-1-TEO1\PROYECTO\views\header.php');
 					<div class="col">
 						<div class="card shadow-sm">
 							<br>
-							<svg class="bd-placeholder-img card-img-top" width="100%" height="225"
-								xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
-								preserveAspectRatio="xMidYMid slice" focusable="false">
-								<image href="http://localhost/PRACTICA-1-TEO1/PROYECTO/resources/maiizCultura.jpg"
-									width="100%" height="100%" />
+							<svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+								<image href="http://localhost/PRACTICA-1-TEO1/PROYECTO/resources/maiizCultura.jpg" width="100%" height="100%" />
 							</svg>
 							<div class="card-body">
 								<p class="card-text">
@@ -115,25 +96,20 @@ require_once('C:\xampp\htdocs\PRACTICA-1-TEO1\PROYECTO\views\header.php');
 								resistencia, han contribuido a su importancia cultural.</p>
 								<div class="d-flex justify-content-between align-items-center">
 									<div class="btn-group">
-										<form method="GET"
-											action="http://localhost/PRACTICA-1-TEO1/PROYECTO/controller/controladorContenido.php">
+										<form method="GET" action="http://localhost/PRACTICA-1-TEO1/PROYECTO/controller/controladorContenido.php">
 											<input type="hidden" name="contenido" value="3">
 											<button type="submit" class="btn btn-sm btn-outline-secondary">Ver</button>
 										</form>
 										<?php if (isset($_SESSION['rol'])) { ?>
-										<?php if ($_SESSION['rol'] == 'ADMIN') { ?>
-										<form
-											action="http://localhost/PRACTICA-1-TEO1/PROYECTO/controller/modificarContenidoController.php"
-											method="post">
-											<input type="hidden" name="contenido" value="3">
-											<button type="submit"
-												class="btn btn-sm btn-outline-secondary mx-2">Modificar</button>
-										</form>
+											<?php if ($_SESSION['rol'] == 'ADMIN') { ?>
+												<form action="http://localhost/PRACTICA-1-TEO1/PROYECTO/controller/modificarContenidoController.php" method="post">
+													<input type="hidden" name="contenido" value="3">
+													<button type="submit" class="btn btn-sm btn-outline-secondary mx-2">Modificar</button>
+												</form>
 										<?php }
 										} ?>
 									</div>
-									<small
-										class="text-muted"><?php echo "Comentarios ".$tema3 ?></small>
+									<small class="text-muted"><?php echo "Comentarios " . $tema3 ?></small>
 								</div>
 							</div>
 						</div>

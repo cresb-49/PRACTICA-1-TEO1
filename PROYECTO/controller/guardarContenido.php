@@ -10,11 +10,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $json = file_get_contents('php://input');
     // Convierte el JSON a un objeto PHP
     $datos = json_decode($json);
-    $response = array('status'=>'OK','mensaje'=>'La operacion se realizo con exito','redireccion'=>$datos -> tema);
+    $response = array('status' => 'OK', 'mensaje' => 'La operacion se realizo con exito', 'redireccion' => $datos->tema);
     try {
-        $database -> updateContenido($datos -> tema, $datos -> contenido);
+        $database->updateContenido($datos->tema, $datos->contenido);
     } catch (Exception $ex) {
-        $response = array('status'=>'ERROR','mensaje'=>$ex->getMessage(),'redireccion'=>null);
+        $response = array('status' => 'ERROR', 'mensaje' => $ex->getMessage(), 'redireccion' => null);
     }
     $jResponse = json_encode($response);
     header('Content-Type: application/json');

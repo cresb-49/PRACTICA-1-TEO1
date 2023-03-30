@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(isset($_GET['contenido'])){
+if (isset($_GET['contenido'])) {
     // Obtener el valor del parámetro 'contenido'
     $contenido = $_GET['contenido'];
     //$model = new database();

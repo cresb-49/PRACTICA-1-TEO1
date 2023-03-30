@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Lee los datos enviados en el cuerpo de la petición
     //$data_in = file_get_contents('php://input');
     $data_in = $_POST['contenido'];
-    $clasificacion = $db -> getClasificacion($data_in);
+    $clasificacion = $db->getClasificacion($data_in);
     $contenido = $clasificacion['contenido'];
     $tema = $data_in;
     if ($data_in > 3) {

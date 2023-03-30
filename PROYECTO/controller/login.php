@@ -9,25 +9,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Convierte el JSON a un objeto PHP
     $datos = json_decode($json);
 
-    $response = array('status'=>'OK','mensaje'=>'Datos recibidos');
+    $response = array('status' => 'OK', 'mensaje' => 'Datos recibidos');
 
     if ($datos->type === 'LOG') {
-        $result = $db -> login($datos->params->user, $datos->params->pass);
+        $result = $db->login($datos->params->user, $datos->params->pass);
         if ($result == null) {
             //Estructura de la respuesta para la vista
-            $response = array('status'=>'ERROR','mensaje'=>'El usuario o contraseña son incorrectos');
+            $response = array('status' => 'ERROR', 'mensaje' => 'El usuario o contraseña son incorrectos');
         } else {
             $user = $result['username'];
             $rol = $result['rol'];
             $_SESSION["username"] = $user;
             $_SESSION["rol"] = $rol;
             //Estructura de la respuesta para la vista
-            $response = array('status'=>'OK','mensaje'=>'Log-in');
+            $response = array('status' => 'OK', 'mensaje' => 'Log-in');
         }
     } elseif ($datos->type === 'LOGOUT') {
         session_unset();
         session_destroy();
-        $response = array('status'=>'OK','mensaje'=>'Session Cerrada');
+        $response = array('status' => 'OK', 'mensaje' => 'Session Cerrada');
     } elseif ($datos->type === 'SIGN') {
         //Informaciones para el usaurio
         $info1 = "- Direccion de correo electrónico no válida, ejemplo example@email.com";
@@ -52,9 +52,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $mensaje = $mensaje . 'Las contrasenas deben ser iguales' . '\n';
         }
         if (empty($mensaje)) {
-            $response = array('status'=>'OK','mensaje'=>'Se registro con exito en el blog');
+            $response = array('status' => 'OK', 'mensaje' => 'Se registro con exito en el blog');
         } else {
-            $response = array('status'=>'ERROR','mensaje'=>$mensaje);
+            $response = array('status' => 'ERROR', 'mensaje' => $mensaje);
         }
     }
     //Empaquetado y envio de informacion a la vista

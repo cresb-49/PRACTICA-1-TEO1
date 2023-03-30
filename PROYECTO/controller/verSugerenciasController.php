@@ -17,13 +17,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                 indexController::index();
                 break;
         }
-
-        
     }
 }
 
 function verSugerencias($db)
 {
-    $sugerencias = $db -> getSugerencias();
+    $sugerencias = $db->getSugerencias();
     require_once('C:\xampp\htdocs\PRACTICA-1-TEO1\PROYECTO\views\verSugerencias.php');
 }
