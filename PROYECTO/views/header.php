@@ -31,8 +31,12 @@ print_r($_SERVER['CONTEXT_DOCUMENT_ROOT']);
 							<li><a href="http://localhost/PRACTICA-1-TEO1/PROYECTO/controller/verSugerenciasController.php?ver=1" class="nav-link px-2 text-secondary">Visualizar Sugerencias</a></li>
 						<?php } ?>
 					<?php } ?>
-
-					<li><a href="#" class="nav-link px-2 text-secondary">Acerca de</a></li>
+					<?php if (isset($_SESSION['rol'])) { ?>
+						<?php if ($_SESSION['rol'] === 'ADMIN') { ?>
+							<li><a href="http://localhost/PRACTICA-1-TEO1/PROYECTO/views/registroAdmin.php" class="nav-link px-2 text-secondary">Registrar Admin</a></li>
+						<?php } ?>
+					<?php } ?>
+					<!--<li><a href="#" class="nav-link px-2 text-secondary">Acerca de</a></li>-->
 				</ul>
 
 				<?php if (isset($_SESSION['username'])) { ?>

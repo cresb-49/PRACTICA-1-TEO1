@@ -1,6 +1,6 @@
 <?php
-session_start();
-require('C:\xampp\htdocs\PRACTICA-1-TEO1\PROYECTO\views\header.php');
+//session_start();
+require_once('C:\xampp\htdocs\PRACTICA-1-TEO1\PROYECTO\views\header.php');
 ?>
 <link rel="stylesheet" href="http://localhost/PRACTICA-1-TEO1/PROYECTO/views/css/comentarios.css">
 <br>
@@ -18,4 +18,4 @@ require('C:\xampp\htdocs\PRACTICA-1-TEO1\PROYECTO\views\header.php');
         </div>
     <?php } ?>
 </div>
-<?php require('C:\xampp\htdocs\PRACTICA-1-TEO1\PROYECTO\views\footer.php'); ?>
+<?php require_once('C:\xampp\htdocs\PRACTICA-1-TEO1\PROYECTO\views\footer.php'); ?>

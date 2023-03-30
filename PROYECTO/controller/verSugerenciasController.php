@@ -1,6 +1,7 @@
 <?php
+session_start();
 require_once('C:\xampp\htdocs\PRACTICA-1-TEO1\PROYECTO\model\database.php');
-
+require_once('C:\xampp\htdocs\PRACTICA-1-TEO1\PROYECTO\controller\retornos.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $db = new database();
@@ -10,6 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
         switch ($contenido) {
             case 1:
+                Retornos::returnIndexIfNotAdmin();
                 verSugerencias($db);
                 break;
             default:

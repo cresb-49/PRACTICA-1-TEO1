@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Convierte el JSON a un objeto PHP
     $datos = json_decode($json);
 
-    $response = array('status' => 'OK', 'mensaje' => 'Datos recibidos');
+    $response = array('status' => 'ERROR', 'mensaje' => 'Accion no especificada');
 
     if ($datos->type === 'LOG') {
         $result = $db->login($datos->params->user, $datos->params->pass);
@@ -29,30 +29,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         session_destroy();
         $response = array('status' => 'OK', 'mensaje' => 'Session Cerrada');
     } elseif ($datos->type === 'SIGN') {
-        //Informaciones para el usaurio
-        $info1 = "- Direccion de correo electrónico no válida, ejemplo example@email.com";
-        $info2 = "- Los nombres de usuario válidos contienen mayúsculas y minúsculas, números y guiones bajos (underscore), y deben tener entre 3 y 16 caracteres de longitud.";
-        $info3 = "- Una contraseña válida tiene: 8-15 caracteres, 1 mayúscula, 1 minúscula, 1 número, sin espacios y con al menos 1 caracter especial (@$!%#*?&).";
-        //Expreciones regulares de validacion de datos
-        $mensaje = "";
-        //Validacion del correo electronico
-        if (!(preg_match('/^([a-zA-Z0-9._%+-]+)@([a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/', $datos->params->email))) {
-            $mensaje = $mensaje . $info1 . '\n';
-        }
-        //Validacion del nombre de usuario
-        if (!(preg_match('/^[a-zA-Z0-9_]{3,16}$/', $datos->params->user))) {
-            $mensaje = $mensaje . $info2 . '\n';
-        }
-        //Validacion de password
-        if (!(preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%#*?&])[A-Za-z\d@$!%#*?&]{8,15}$/', $datos->params->pass))) {
-            $mensaje = $mensaje . $info3 . '\n';
-        }
-        //Verificar que las paswords sean iguales
-        if (($datos->params->pass !== $datos->params->pass2)) {
-            $mensaje = $mensaje . 'Las contrasenas deben ser iguales' . '\n';
-        }
+        $mensaje = verficacion($datos);
+
         if (empty($mensaje)) {
-            $response = array('status' => 'OK', 'mensaje' => 'Se registro con exito en el blog');
+            $response = registroUsuario($datos, $db, 'USUARIO', 'Se registro con exito el usuario en el blog');
+        } else {
+            $response = array('status' => 'ERROR', 'mensaje' => $mensaje);
+        }
+    } elseif ($datos->type === 'SIGN_ADMIN') {
+        $mensaje = verficacion($datos);
+
+        if (empty($mensaje)) {
+            $response = registroUsuario($datos, $db, 'ADMIN', 'Se registro con exito el administrador en el blog');
         } else {
             $response = array('status' => 'ERROR', 'mensaje' => $mensaje);
         }
@@ -61,4 +49,53 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $jResponse = json_encode($response);
     header('Content-Type: application/json');
     echo $jResponse;
+}
+
+function registroUsuario($datos, $db, $rol, $okMensaje)
+{
+    $response = array('status' => 'ERROR', 'mensaje' => 'Accion no especificada');
+    try {
+        $prevUser = $db->getUser($datos->params->user);
+        if ($prevUser === null) {
+            $db->saveUsuario($datos->params->user, $datos->params->email, $datos->params->pass, $rol);
+            $response = array('status' => 'OK', 'mensaje' => $okMensaje);
+        } else {
+            $response = array('status' => 'ERROR', 'mensaje' => 'El usuario "' . $datos->params->user . '" ya esta en uso en el blog');
+        }
+    } catch (PDOException $ex) {
+        if ($ex->getCode() === '23000') {
+            $response = array('status' => 'ERROR', 'mensaje' => 'El email "' . $datos->params->email . '" ya esta en uso en el blog');
+        } else {
+            $response = array('status' => 'ERROR', 'mensaje' => 'Error con la base de datos, codigo: ' . $ex->getCode());
+        }
+    }
+    return $response;
+}
+
+
+function verficacion($datos)
+{
+    //Informaciones para el usaurio
+    $info1 = "- Direccion de correo electrónico no válida, ejemplo example@email.com";
+    $info2 = "- Los nombres de usuario válidos contienen mayúsculas y minúsculas, números y guiones bajos (underscore), y deben tener entre 3 y 16 caracteres de longitud.";
+    $info3 = "- Una contraseña válida tiene: 8-15 caracteres, 1 mayúscula, 1 minúscula, 1 número, sin espacios y con al menos 1 caracter especial (@$!%#*?&).";
+
+    $mensaje = "";
+    //Validacion del correo electronico
+    if (!(preg_match('/^([a-zA-Z0-9._%+-]+)@([a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/', $datos->params->email))) {
+        $mensaje = $mensaje . $info1 . '\n';
+    }
+    //Validacion del nombre de usuario
+    if (!(preg_match('/^[a-zA-Z0-9_]{3,16}$/', $datos->params->user))) {
+        $mensaje = $mensaje . $info2 . '\n';
+    }
+    //Validacion de password
+    if (!(preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%#*?&])[A-Za-z\d@$!%#*?&]{8,15}$/', $datos->params->pass))) {
+        $mensaje = $mensaje . $info3 . '\n';
+    }
+    //Verificar que las paswords sean iguales
+    if ($datos->params->pass !== $datos->params->pass2) {
+        $mensaje = $mensaje . 'Las contraseñas deben ser iguales' . '\n';
+    }
+    return $mensaje;
 }

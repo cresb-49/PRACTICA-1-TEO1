@@ -1,9 +1,11 @@
 <?php
 session_start();
 require_once('C:\xampp\htdocs\PRACTICA-1-TEO1\PROYECTO\model\database.php');
+require_once('C:\xampp\htdocs\PRACTICA-1-TEO1\PROYECTO\controller\retornos.php');
 $database = new database();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    Retornos::returnIndexIfNotAdmin();
     //Conexion con la base de datos
     $db = new database();
     // Lee los datos enviados en el cuerpo de la petición
@@ -18,4 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         indexController::index();
     }
     require_once('C:\xampp\htdocs\PRACTICA-1-TEO1\PROYECTO\views\editorContenido.php');
+}
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    Retornos::returnIndexIfNotAdmin();
 }

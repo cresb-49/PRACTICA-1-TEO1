@@ -1,9 +1,12 @@
 <?php
 session_start();
-require('C:\xampp\htdocs\PRACTICA-1-TEO1\PROYECTO\views\header.php');
+require_once('C:\xampp\htdocs\PRACTICA-1-TEO1\PROYECTO\views\header.php');
+require_once('C:\xampp\htdocs\PRACTICA-1-TEO1\PROYECTO\controller\retornos.php');
+Retornos::returnIndexIfNotLogin();
 ?>
 <link rel="stylesheet" href="http://localhost/PRACTICA-1-TEO1/PROYECTO/views/css/comentarios.css">
 <br>
+<div id="contenedor" class="container"></div>
 <div class="container comments-container">
     <div class="comment-container">
         <div class="comment-header">
@@ -26,5 +29,5 @@ require('C:\xampp\htdocs\PRACTICA-1-TEO1\PROYECTO\views\header.php');
     </div>
 </div>
 <?php
-require('C:\xampp\htdocs\PRACTICA-1-TEO1\PROYECTO\views\footer.php');
+require_once('C:\xampp\htdocs\PRACTICA-1-TEO1\PROYECTO\views\footer.php');
 ?>

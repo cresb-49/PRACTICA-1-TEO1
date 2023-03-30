@@ -1,5 +1,7 @@
 <?php
 session_start();
+require_once('C:\xampp\htdocs\PRACTICA-1-TEO1\PROYECTO\controller\retornos.php');
+Retornos::returnIndexIfLogin();
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -6,7 +6,7 @@ document.getElementById("formRegistrarComentario").addEventListener("submit", fu
     // Manejar la respuesta del servidor
     xhr.onload = function () {
         if (xhr.status === 200) {
-            console.log(xhr.responseText); 
+            //console.log(xhr.responseText); 
             let textarea = document.getElementById('comentario');
             textarea.value = ''; 
         }

@@ -24,7 +24,7 @@ class database
 
     public function getComentariosTema1()
     {
-        $consulta = 'SELECT * FROM comentarios as co WHERE co.clasificacion = 1';
+        $consulta = 'SELECT * FROM comentarios as co WHERE co.clasificacion = 1 ORDER BY co.fecha DESC';
         $response = $this->db->query($consulta);
         $resultado = [];
         $index = 0;
@@ -49,7 +49,7 @@ class database
 
     public function getComentariosTema2()
     {
-        $consulta = 'SELECT * FROM comentarios as co WHERE co.clasificacion = 2';
+        $consulta = 'SELECT * FROM comentarios as co WHERE co.clasificacion = 2 ORDER BY co.fecha DESC';
         $response = $this->db->query($consulta);
         $resultado = [];
         $index = 0;
@@ -73,7 +73,7 @@ class database
 
     public function getComentariosTema3()
     {
-        $consulta = 'SELECT * FROM comentarios as co WHERE co.clasificacion = 3';
+        $consulta = 'SELECT * FROM comentarios as co WHERE co.clasificacion = 3 ORDER BY co.fecha DESC';
         $response = $this->db->query($consulta);
         $resultado = [];
         $index = 0;
@@ -96,15 +96,30 @@ class database
         $stmt->execute();
     }
 
-    //Registro de un nuevo usuario en el blog
-    public function saveUsuario($email, $usuario, $password)
+    //Obtener un usuario
+    public function getUser($username)
     {
-        $sql = 'INSERT INTO sugerencias (usuario,fecha,contenido) VALUES(:valor1,:valor2,:valor3)';
+        $sql  = 'SELECT * FROM usuario WHERE username = :user';
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(':user', $username);
+        $stmt->execute();
+        $resultado = null;
+        $fila = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        if ($fila !== false && count($fila) > 0) {
+            $resultado = $fila[0];
+        }
+        return $resultado;
+    }
 
+    //Registro de un nuevo usuario en el blog
+    public function saveUsuario($usuario, $email, $password, $rol)
+    {
+        $sql = 'INSERT INTO usuario (username,email,password,rol) VALUES (:valor1,:valor2,:valor3,:valor4)';
         $stmt = $this->db->prepare($sql);
         $stmt->bindParam(':valor1', $usuario);
-        $stmt->bindParam(':valor2', $fechaActual);
-        $stmt->bindParam(':valor3', $comentario);
+        $stmt->bindParam(':valor2', $email);
+        $stmt->bindParam(':valor3', $password);
+        $stmt->bindParam(':valor4', $rol);
         $stmt->execute();
     }
 
