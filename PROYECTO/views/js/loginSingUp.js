@@ -34,8 +34,10 @@ document.getElementById("formSignUp").addEventListener("submit", function (event
         if (xhr.status === 200) {
             let res = JSON.parse(xhr.responseText);
             if(res.status === 'ERROR'){
-                //console.log(res);
                 activarAlerta("Error al registrarse!!!",res.mensaje.replace(/\\n/g, "<br>"));
+            }else{
+                activarAlerta("Registro Exitoso!!!",res.mensaje.replace(/\\n/g, "<br>"));
+                document.getElementById('formSignUp').reset();
             }
         }
     };

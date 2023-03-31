@@ -14,7 +14,6 @@ class contenidoAlimentacionController
     static function mostrar()
     {
         $model = new database();
-        $comentarios = $model->getComentariosTema1();
         $id = 1;
         $clasificacion = $model->getClasificacion($id);
         $contenido = $clasificacion['contenido'];
