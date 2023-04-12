@@ -89,25 +89,36 @@ class database
     {
         $fechaActual = date('Y-m-d H:i:s');
         $res = 0;
-        $respuesta = '';
-        $sql = 'INSERT INTO sugerencias (usuario,fecha,contenido,response,respuesta) VALUES(:valor1,:valor2,:valor3,:valor4,:valor5)';
+        $sql = 'INSERT INTO sugerencias (usuario,fecha,contenido,response) VALUES(:valor1,:valor2,:valor3,:valor4)';
         $stmt = $this->db->prepare($sql);
         $stmt->bindParam(':valor1', $usuario);
         $stmt->bindParam(':valor2', $fechaActual);
         $stmt->bindParam(':valor3', $comentario);
         $stmt->bindParam(':valor4', $res);
-        $stmt->bindParam(':valor5', $respuesta);
         $stmt->execute();
     }
 
     //Acutualizacion de la sugerencia con la respuesta
-    public function updateSugerencia($response, $respuesta, $id)
+    public function updateSugerencia($response, $id)
     {
-        $sql = 'UPDATE sugerencias SET response = :valor1,respuesta=:valor2 WHERE id = :valor3';
+        $sql = 'UPDATE sugerencias SET response = :valor1 WHERE id = :valor3';
         $stmt = $this->db->prepare($sql);
         $stmt->bindParam(':valor1', $response);
-        $stmt->bindParam(':valor2', $respuesta);
         $stmt->bindParam(':valor3', $id);
+        $stmt->execute();
+    }
+
+    //REgistrar respuesta del administrador a sugerencia
+
+    public function saveRespuesta($idSugerencia, $usuario, $respuesta)
+    {
+        $fechaActual = date('Y-m-d H:i:s');
+        $sql = 'INSERT INTO respuestaSugerencia (usuario,fecha,respuesta,sugerencia) VALUES(:valor1,:valor2,:valor3,:valor4)';
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(':valor1', $usuario);
+        $stmt->bindParam(':valor2', $fechaActual);
+        $stmt->bindParam(':valor3', $respuesta);
+        $stmt->bindParam(':valor4', $idSugerencia);
         $stmt->execute();
     }
 
@@ -173,11 +184,11 @@ class database
     //Obtener sugerencias ya con respuesta
     public function getSugerenciasUser($username)
     {
-        $sql = 'SELECT * FROM sugerencias AS su WHERE su.response = 1 AND su.usuario = :valor1 ORDER BY su.fecha DESC';
+        $sql = 'SELECT su.id as idSugerencia, su.usuario as creador,su.fecha,su.contenido as sugerencia,su.response as response,rs.usuario as editor, rs.fecha as res_fecha,rs.respuesta FROM sugerencias AS su INNER JOIN respuestasugerencia as rs ON rs.sugerencia = su.id WHERE su.response = 1 AND su.usuario = :valor1 ORDER BY su.fecha DESC;';
         $stmt = $this->db->prepare($sql);
         $stmt->bindParam(':valor1', $username);
         $stmt->execute();
-        $resultado = $stmt ->fetchAll(PDO::FETCH_ASSOC);
+        $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $resultado;
     }
 

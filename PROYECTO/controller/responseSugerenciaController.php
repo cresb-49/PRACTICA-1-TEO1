@@ -12,10 +12,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Accede a los valores del objeto
     $respuesta = $datos->respuesta;
     $id = $datos->sugerencia;
+    $usuario = $datos->usuario;
     $response = 1;
     $res = array('status' => 'OK', 'mensaje' => 'La operacion se realizo con exito');
     try {
-        $db->updateSugerencia($response, $respuesta, $id);
+        $db->updateSugerencia($response, $id);
+        $db->saveRespuesta($id, $usuario, $respuesta);
     } catch (Exception $e) {
         $res = array('status' => 'ERROR', 'mensaje' => $e->getMessage());
     }
