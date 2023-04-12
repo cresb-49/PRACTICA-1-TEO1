@@ -88,11 +88,26 @@ class database
     public function saveSugerencia($comentario, $usuario)
     {
         $fechaActual = date('Y-m-d H:i:s');
-        $sql = 'INSERT INTO sugerencias (usuario,fecha,contenido) VALUES(:valor1,:valor2,:valor3)';
+        $res = 0;
+        $respuesta = '';
+        $sql = 'INSERT INTO sugerencias (usuario,fecha,contenido,response,respuesta) VALUES(:valor1,:valor2,:valor3,:valor4,:valor5)';
         $stmt = $this->db->prepare($sql);
         $stmt->bindParam(':valor1', $usuario);
         $stmt->bindParam(':valor2', $fechaActual);
         $stmt->bindParam(':valor3', $comentario);
+        $stmt->bindParam(':valor4', $res);
+        $stmt->bindParam(':valor5', $respuesta);
+        $stmt->execute();
+    }
+
+    //Acutualizacion de la sugerencia con la respuesta
+    public function updateSugerencia($response, $respuesta, $id)
+    {
+        $sql = 'UPDATE sugerencias SET response = :valor1,respuesta=:valor2 WHERE id = :valor3';
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(':valor1', $response);
+        $stmt->bindParam(':valor2', $respuesta);
+        $stmt->bindParam(':valor3', $id);
         $stmt->execute();
     }
 
@@ -143,7 +158,7 @@ class database
     //Obtener las sugerencias del sistema
     public function getSugerencias()
     {
-        $consulta = 'SELECT * FROM sugerencias AS su ORDER BY su.fecha DESC';
+        $consulta = 'SELECT * FROM sugerencias AS su WHERE su.response = 0 ORDER BY su.fecha DESC';
         $response = $this->db->query($consulta);
         $resultado = [];
         $index = 0;
@@ -151,6 +166,18 @@ class database
             $resultado[$index] = $fila;
             $index++;
         }
+        return $resultado;
+    }
+
+
+    //Obtener sugerencias ya con respuesta
+    public function getSugerenciasUser($username)
+    {
+        $sql = 'SELECT * FROM sugerencias AS su WHERE su.response = 1 AND su.usuario = :valor1 ORDER BY su.fecha DESC';
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(':valor1', $username);
+        $stmt->execute();
+        $resultado = $stmt ->fetchAll(PDO::FETCH_ASSOC);
         return $resultado;
     }
 

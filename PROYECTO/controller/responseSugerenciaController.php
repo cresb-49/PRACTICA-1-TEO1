@@ -10,15 +10,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Convierte el JSON a un objeto PHP
     $datos = json_decode($json);
     // Accede a los valores del objeto
-    $sugerencia = $datos->sugerencia;
-    $usuario = $datos->usuario;
-    $response = array('status' => 'OK', 'mensaje' => 'La operacion se realizo con exito');
+    $respuesta = $datos->respuesta;
+    $id = $datos->sugerencia;
+    $response = 1;
+    $res = array('status' => 'OK', 'mensaje' => 'La operacion se realizo con exito');
     try {
-        $db->saveSugerencia($sugerencia, $usuario);
+        $db->updateSugerencia($response, $respuesta, $id);
     } catch (Exception $e) {
-        $response = array('status' => 'ERROR', 'mensaje' => $e->getMessage());
+        $res = array('status' => 'ERROR', 'mensaje' => $e->getMessage());
     }
-    $jResponse = json_encode($response);
+    $jResponse = json_encode($res);
     header('Content-Type: application/json');
     echo $jResponse;
 }

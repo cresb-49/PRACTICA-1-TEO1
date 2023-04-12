@@ -26,6 +26,8 @@ CREATE TABLE sugerencias(
     usuario VARCHAR(16) NOT NULL,
     fecha VARCHAR(20) NOT NULL,
     contenido TEXT NOT NULL,
+    response TINYINT NOT NULL,
+    respuesta TEXT NOT NULL,
     FOREIGN KEY (usuario) REFERENCES usuario(username)
 );
 /*Usuarios de inicio del sistema*/
