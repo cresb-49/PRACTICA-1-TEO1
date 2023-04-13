@@ -26,8 +26,20 @@ CREATE TABLE sugerencias(
     usuario VARCHAR(16) NOT NULL,
     fecha VARCHAR(20) NOT NULL,
     contenido TEXT NOT NULL,
+    response TINYINT NOT NULL,
     FOREIGN KEY (usuario) REFERENCES usuario(username)
 );
+
+CREATE TABLE respuestaSugerencia(
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    usuario VARCHAR(16) NOT NULL,
+    fecha VARCHAR(20) NOT NULL,
+    respuesta TEXT NOT NULL,
+    sugerencia INT NOT NULL,
+    FOREIGN KEY (usuario) REFERENCES usuario(username),
+    FOREIGN KEY (sugerencia) REFERENCES sugerencias(id)
+);
+
 /*Usuarios de inicio del sistema*/
 INSERT INTO usuario VALUES('admin','Admin12345!','admin_001@dominio.com','ADMIN');
 /*Classificaciones existentes del blog*/

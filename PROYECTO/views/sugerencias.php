@@ -3,6 +3,7 @@ session_start();
 require_once('C:\xampp\htdocs\PRACTICA-1-TEO1\PROYECTO\views\header.php');
 require_once('C:\xampp\htdocs\PRACTICA-1-TEO1\PROYECTO\controller\retornos.php');
 Retornos::returnIndexIfNotLogin();
+Retornos::returnIndexIfAdmin();
 ?>
 <link rel="stylesheet" href="http://localhost/PRACTICA-1-TEO1/PROYECTO/views/css/comentarios.css">
 <br>
