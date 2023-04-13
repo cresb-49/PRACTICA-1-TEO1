@@ -140,24 +140,24 @@ class database
     //Registro de un nuevo usuario en el blog
     public function saveUsuario($usuario, $email, $password, $rol)
     {
+        $opciones = ['cost' => 12,];
+        $passHash = password_hash($password, PASSWORD_BCRYPT, $opciones);
         $sql = 'INSERT INTO usuario (username,email,password,rol) VALUES (:valor1,:valor2,:valor3,:valor4)';
         $stmt = $this->db->prepare($sql);
         $stmt->bindParam(':valor1', $usuario);
         $stmt->bindParam(':valor2', $email);
-        $stmt->bindParam(':valor3', $password);
+        $stmt->bindParam(':valor3', $passHash);
         $stmt->bindParam(':valor4', $rol);
         $stmt->execute();
     }
 
     //Login en el sistema
-    public function login($usuario, $password)
+    public function login($usuario)
     {
-        $sql = 'SELECT u.username, u.rol FROM usuario as u WHERE u.username = :user AND u.password = :pass';
+        $sql = 'SELECT u.username, u.rol, u.password FROM usuario as u WHERE u.username = :user';
         $stmt = $this->db->prepare($sql);
         $stmt->bindParam(':user', $usuario);
-        $stmt->bindParam(':pass', $password);
         $stmt->execute();
-
         $resultado = null;
         $fila = $stmt->fetchAll(PDO::FETCH_ASSOC);
         if ($fila !== false && count($fila) > 0) {

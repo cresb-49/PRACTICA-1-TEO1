@@ -6,6 +6,7 @@ document.getElementById("formLogin").addEventListener("submit", function (event)
     // Manejar la respuesta del servidor
     xhr.onload = function () {
         if (xhr.status === 200) {
+            console.log(xhr.responseText);
             let response = JSON.parse(xhr.responseText);
             console.log(response);
             if(response.status === 'OK'){

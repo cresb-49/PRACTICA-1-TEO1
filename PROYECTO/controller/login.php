@@ -12,17 +12,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $response = array('status' => 'ERROR', 'mensaje' => 'Accion no especificada');
 
     if ($datos->type === 'LOG') {
-        $result = $db->login($datos->params->user, $datos->params->pass);
-        if ($result == null) {
-            //Estructura de la respuesta para la vista
-            $response = array('status' => 'ERROR', 'mensaje' => 'El usuario o contraseña son incorrectos');
+        $result = $db->login($datos->params->user);
+        if ($result != null) {
+            if (password_verify($datos->params->pass, $result['password'])) {
+                $user = $result['username'];
+                $rol = $result['rol'];
+                $_SESSION["username"] = $user;
+                $_SESSION["rol"] = $rol;
+                //Estructura de la respuesta para la vista
+                $response = array('status' => 'OK', 'mensaje' => 'Log-in');
+            } else {
+                //Estructura de la respuesta para la vista
+                $response = array('status' => 'ERROR', 'mensaje' => 'La contraseña es incorrecta');
+            }
         } else {
-            $user = $result['username'];
-            $rol = $result['rol'];
-            $_SESSION["username"] = $user;
-            $_SESSION["rol"] = $rol;
             //Estructura de la respuesta para la vista
-            $response = array('status' => 'OK', 'mensaje' => 'Log-in');
+            $response = array('status' => 'ERROR', 'mensaje' => 'El usuario no existe en el sistema');
         }
     } elseif ($datos->type === 'LOGOUT') {
         session_unset();

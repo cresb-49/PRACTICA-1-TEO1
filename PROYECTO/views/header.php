@@ -1,11 +1,5 @@
-<?php
-//print_r($_SESSION);
-//print_r($_SERVER['CONTEXT_DOCUMENT_ROOT']);
-?>
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -41,7 +35,6 @@
 							<li><a href="http://localhost/PRACTICA-1-TEO1/PROYECTO/views/verRespuestaSugerencias.php" class="nav-link px-2 text-secondary">Respuestas Sugerencias</a></li>
 						<?php } ?>
 					<?php } ?>
-					<!--<li><a href="#" class="nav-link px-2 text-secondary">Acerca de</a></li>-->
 				</ul>
 
 				<?php if (isset($_SESSION['username'])) { ?>
